@@ -31,6 +31,7 @@ app.get("/getTodos", (req, res) => {
 
 app.put("/:id", (req, res) => {
     const todoID = req.params.id;
+    console.log(req.body);
     const userInput = req.body;
     db.getDB()
         .collection(collection)
@@ -62,7 +63,6 @@ app.post("/add", (req, res) => {
                 res.json({ result: results, document: results.ops[0], msg: "Successfully inserted todo", error : null});
             }
         });
-
 });
 
 app.delete("/del", (req, res) => {
@@ -78,8 +78,6 @@ app.delete("/del", (req, res) => {
             }
         });
 });
-
-
 
 db.connect((err) => {
     if (err) {

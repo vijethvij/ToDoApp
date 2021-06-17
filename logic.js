@@ -4,7 +4,7 @@ $(document).ready(() => {
     const todoUserInput = $("#todoUserInput");
     
     const getTodos = () => {
-        console.log("In gt todos");
+        console.log("In get todos");
         fetch("/getTodos", { method: "GET" })
             .then((response) => {
                 return response.json();
@@ -22,7 +22,7 @@ $(document).ready(() => {
         let value = todoUserInput.val();
         editBtn.click(() => {
             console.log(value);
-            fetch(`/${todo._id}`, {
+            fetch(`/${todo._id}`, { 
                 method: "PUT",
                 body: JSON.stringify({ todo: todoUserInput.val() }),
                 headers: {
@@ -51,14 +51,14 @@ $(document).ready(() => {
                     "content-type": "application/json; charset=utf-8",
                 },
             })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    if (data.ok == 1) {
-                        $(`#${listItemID}`).remove();
-                    }
-                });
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                if (data.ok == 1) {
+                    $(`#${listItemID}`).remove();
+                }
+            });
         });
     };
 
@@ -79,7 +79,7 @@ $(document).ready(() => {
         return `<li class="list-group-item" id="${ids.listItemID}">
                     <div class="row">
                         <div class="col-md-4" id="${ids.todoID}">${todo.todo}</div>
-                        <div class="col-md-4"></div>  
+                        <div class="col-md-4"></div> 
                         <div class="col-md-4 text-right">
                             <button type="button" class="btn btn-secondary" id="${ids.editID}">Edit</button>     
                             <button type="button" class="btn btn-danger" id="${ids.deleteID}">Delete</button>     
