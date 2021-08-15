@@ -80,9 +80,9 @@ app.delete("/del", (req, res) => {
 });
 
 db.connect((err) => {
-//     if (err) {
-//         console.log("Unable to connect db");
-//     } 
+    if (err) {
+        console.log("Unable to connect db");
+    } 
     else {
         app.listen(3000, () => {
             console.log("DB Connected! Listening at port 3000");
